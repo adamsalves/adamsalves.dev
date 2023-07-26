@@ -2,3 +2,4 @@
 .env.build
 .vercel
 .hugo_build.lock
+public/
