@@ -1,3 +1,4 @@
 .env
 .env.build
 .vercel
+.hugo_build.lock
