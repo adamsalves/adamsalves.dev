@@ -5,6 +5,7 @@ theme = "hugo-coder"
 
 languageCode = "pt-br"
 defaultContentLanguage = "pt-br"
+defaultContentLanguageInSubdir = true
 
 paginate = 20
 
@@ -18,6 +19,7 @@ tabWidth = 2
   info = "Desenvolvedor Front-End"
   keywords = "blog,desenvolvedor,pessoal,software,front-end,javascript,vue,react"
   avatarurl = "images/avatar.jpg"
+  images = ["images/og_cover.png"]
 
   enableTwemoji = true
 
