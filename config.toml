@@ -29,6 +29,14 @@ style = "github-dark"
   tag = "tags"
   author = "authors"
 
+[params.goatCounter]
+  code = "adamsalves"
+
+[params.utterances]
+  repo = "adamsalves/adamsalves.dev"
+  issueTerm = "pathname"
+  theme = "dark"
+
 # Social links
 [[params.social]]
   name = "Github"
