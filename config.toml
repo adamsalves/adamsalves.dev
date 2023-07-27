@@ -1,4 +1,52 @@
 baseURL = "https://adamsalves.dev/"
-languageCode = "en-us"
-title = "ADAMSALVES"
+
+title = "adamsalves"
 theme = "hugo-coder"
+
+languageCode = "pt-br"
+defaultContentLanguage = "pt-br"
+
+paginate = 20
+
+[markup.highlight]
+style = "github-dark"
+
+[params]
+  author = "Adams Alves"
+  description = "Site pessoal e blog de Adams Alves"
+  info = "Desenvolvedor Front-End"
+  keywords = "blog,desenvolvedor,pessoal,software,front-end,javascript,vue,react"
+  avatarurl = "images/avatar.jpg"
+
+  enableTwemoji = true
+
+  colorScheme = "dark"
+  hidecolorschemetoggle = false
+
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"
+  author = "authors"
+
+# Social links
+[[params.social]]
+  name = "Github"
+  icon = "fa fa-github fa-2x"
+  weight = 1
+  url = "https://github.com/adamsalves/"
+[[params.social]]
+  name = "LinkedIn"
+  icon = "fa fa-linkedin fa-2x"
+  weight = 2
+  url = "https://linkedin.com/in/adams-alves/"
+
+# Menu links
+[[menu.main]]
+  name = "Blog"
+  weight = 1
+  url  = "posts/"
+[[menu.main]]
+  name = "Sobre"
+  weight = 2
+  url = "sobre/"
