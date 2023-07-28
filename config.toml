@@ -41,18 +41,27 @@ tabWidth = 2
   theme = "dark"
 
 # Social links
+
 [[params.social]]
   name = "Github"
   icon = "fa fa-github fa-2x"
   weight = 1
   url = "https://github.com/adamsalves/"
+
 [[params.social]]
   name = "LinkedIn"
   icon = "fa fa-linkedin fa-2x"
   weight = 2
   url = "https://linkedin.com/in/adams-alves/"
 
+[[params.social]]
+  name = "E-mail"
+  icon = "fa fa-envelope-o fa-2x"
+  weight = 3
+  url = "mailto:contato@adamsalves.com.br"  
+
 # Menu links
+
 [[menu.main]]
   name = "Sobre"
   weight = 1
