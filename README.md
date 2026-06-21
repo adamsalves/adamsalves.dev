@@ -1,19 +1,73 @@
-# Hugo Example
+# adamsalves.dev
 
-This directory is a brief example of a [Hugo](https://gohugo.io/) app that can be deployed to Vercel with zero configuration.
+Personal portfolio of **Adams Alves**, Front-End Engineer based in São Paulo, Brazil.
+Built with [Hugo](https://gohugo.io/) and the custom **terminal-mono** theme. The site
+is bilingual: Portuguese (default, served at `/`) and English (served at `/en/`).
 
-## Deploy Your Own
+🌐 Live: <https://adamsalves.dev>
 
-Deploy your own Hugo project with Vercel.
+## Tech stack
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/hugo&template=hugo)
+- **[Hugo](https://gohugo.io/)** (extended), `>= 0.158.0` — static site generator
+- **[terminal-mono](https://github.com/adamsalves/terminal-mono)** — custom theme, included as a git submodule
+- **Vercel** — hosting and CI (config in [`vercel.json`](./vercel.json))
 
-_Live Example: https://hugo-template.vercel.app_
+## Getting started
 
-### How We Created This Example
-
-To get started with Hugo for deployment with Vercel, you can use the [Hugo CLI](https://gohugo.io/commands/) to initialize the project:
+The theme lives in a git submodule, so clone with `--recurse-submodules`:
 
 ```shell
-$ hugo new site project-name
+git clone --recurse-submodules https://github.com/adamsalves/adamsalves.dev.git
+cd adamsalves.dev
 ```
+
+Already cloned without submodules? Pull them in:
+
+```shell
+git submodule update --init --recursive
+```
+
+Run the local dev server (requires the **extended** edition of Hugo):
+
+```shell
+hugo server
+```
+
+Then open <http://localhost:1313>.
+
+Build the production site into `public/`:
+
+```shell
+hugo --gc --minify
+```
+
+## Project structure
+
+```
+.
+├── content/        # markdown content (blog posts, per-language)
+├── static/         # static assets served as-is (favicons, etc.)
+├── archetypes/     # front-matter templates for `hugo new`
+├── themes/
+│   └── terminal-mono/   # theme (git submodule)
+├── hugo.toml       # site config + all page content/params (en & pt)
+└── vercel.json     # Vercel build configuration
+```
+
+Most of the page content (hero, about, experience, projects, contact) lives in the
+`[languages.en.params.*]` and `[languages.pt.params.*]` tables in
+[`hugo.toml`](./hugo.toml) — edit there to update the site copy.
+
+## Deployment
+
+The site is deployed on **Vercel** and rebuilds automatically on every push to the
+default branch. Build settings are committed to the repo in [`vercel.json`](./vercel.json):
+
+- `framework`: `hugo`
+- `buildCommand`: `hugo --gc --minify`
+- `outputDirectory`: `public`
+- `HUGO_VERSION` is pinned via `build.env` so Vercel builds with the same Hugo
+  version as local development. Bump it there when upgrading Hugo.
+
+The theme submodule (`terminal-mono`) is public, so Vercel fetches it automatically
+during the clone step — no extra configuration required.
