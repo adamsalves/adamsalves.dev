@@ -32,7 +32,7 @@ summaryLength = 30
   showScanlines = true       # CRT scanline overlay
   readingProgress = true     # reading-progress bar on posts
   terminalUser = "adams@portfolio"
-  allowIndexing = true       # allow indexing even outside production
+  allowIndexing = false      # index in production only; noindex on previews/dev
   # favicon = "/favicon.svg" # the theme ships a favicon; set to override
   # ogImage = "/img/og.png"  # default image for Open Graph/Twitter
   # twitter = "adamsalves"   # handle (without @) for twitter:site
@@ -59,7 +59,7 @@ summaryLength = 30
       linkedin = "https://linkedin.com/in/adams-alves"
 
 # ============================================================
-#  English (default)
+#  English
 # ============================================================
 [languages.en]
   label = "English"
@@ -149,7 +149,7 @@ I studied Web Programming at Colégio Técnico de Campinas (Cotuca – Unicamp),
           url = "https://github.com/adamsalves/planning-pvoker"
 
 # ============================================================
-#  Português
+#  Português (default)
 # ============================================================
 [languages.pt]
   label = "Português"
