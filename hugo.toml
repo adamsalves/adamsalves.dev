@@ -1,0 +1,239 @@
+baseURL = "https://adamsalves.dev/"
+defaultContentLanguage = "pt"
+defaultContentLanguageInSubdir = false   # pt at /, en at /en/
+theme = "terminal-mono"
+enableRobotsTXT = true
+enableEmoji = true
+summaryLength = 30
+
+[pagination]
+  pagerSize = 5
+
+[taxonomies]
+  tag = "tags"
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    noClasses = false
+    lineNos = false
+    tabWidth = 2
+    guessSyntax = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+    ordered = false
+
+# ============================================================
+#  Shared (non-translatable) params — merged into every language.
+# ============================================================
+[params]
+  showScanlines = true       # CRT scanline overlay
+  readingProgress = true     # reading-progress bar on posts
+  terminalUser = "adams@portfolio"
+  allowIndexing = false      # index in production only; noindex on previews/dev
+  # favicon = "/favicon.svg" # the theme ships a favicon; set to override
+  # ogImage = "/img/og.png"  # default image for Open Graph/Twitter
+  # twitter = "adamsalves"   # handle (without @) for twitter:site
+
+  [params.navbar]
+    brandName = "adamsalves"
+
+  [params.hero.socialLinks]
+    [[params.hero.socialLinks.fontAwesomeIcons]]
+      icon = "fab fa-github"
+      url = "https://github.com/adamsalves"
+    [[params.hero.socialLinks.fontAwesomeIcons]]
+      icon = "fab fa-linkedin-in"
+      url = "https://linkedin.com/in/adams-alves"
+
+  [params.about.skills]
+    enable = true
+    items = ["React", "Vue.js 3", "TypeScript", "Next.js", "Nuxt", "React Native", "CSS-in-JS", "Emotion", "SASS", "Jest", "Testing Library", "Design Systems", "Micro Front-ends", "Node.js"]
+
+  [params.footer]
+    copyright = "adamsalves"
+    [params.footer.socialNetworks]
+      github = "https://github.com/adamsalves"
+      linkedin = "https://linkedin.com/in/adams-alves"
+
+# ============================================================
+#  English
+# ============================================================
+[languages.en]
+  label = "English"
+  locale = "en-US"
+  weight = 2
+  title = "Adams Alves"
+
+  [languages.en.params]
+    title = "Adams Alves"
+    description = "Front-End Engineer with 6+ years building design systems, ERPs and high-scale dashboards in React, Vue.js and TypeScript. Based in São Paulo, Brazil."
+
+    [languages.en.params.hero]
+      intro = "hi, my name is"
+      subtitle = "Front-End Engineer"
+      location = "São Paulo, Brazil"
+      content = "Front-End Engineer with 6+ years building design systems, ERPs and high-scale dashboards with React, Vue.js and TypeScript. Based in São Paulo, Brazil."
+
+    [languages.en.params.about]
+      content = """
+I'm a Front-End Engineer with 6+ years of experience building design systems, ERPs and high-scale dashboards. I specialize in React and Vue.js with TypeScript, with a track record of cutting delivery time and improving developer experience across cross-functional teams — including the design system behind a mobile app with 5M+ downloads on Google Play.
+
+I studied Web Programming at Colégio Técnico de Campinas (Cotuca – Unicamp), and I read and write English proficiently. In my free time I enjoy video games, sports (football, basketball and cycling) and music."""
+
+    [languages.en.params.contact]
+      title = "Let's talk?"
+      content = "My inbox is always open. Whether you have a question or just want to say hi, I'll do my best to get back to you!"
+      btnName = "send email"
+      btnLink = "mailto:me@adamsalves.dev"
+
+    [languages.en.params.experience]
+      enable = true
+      [[languages.en.params.experience.items]]
+        company = "Compass.uol"
+        [[languages.en.params.experience.items.jobs]]
+          name = "Front-End Engineer"
+          date = "Nov 2021 – Feb 2026"
+          content = "Front-end across multiple client products. Led **Livelo**'s design system (React, React Native, TypeScript) for an app with 5M+ Google Play downloads — cutting feature delivery time by 40%+ with reusable components and best-practice docs, and acting as technical reference for cross-functional teams. Also built **Renner**'s nationwide card-distribution backoffice within a micro-frontends architecture, and **EducaCross**' metrics dashboards and online study platform."
+      [[languages.en.params.experience.items]]
+        company = "RedeTV!"
+        [[languages.en.params.experience.items.jobs]]
+          name = "Front-End Engineer"
+          date = "Sep 2020 – Oct 2021"
+          content = "Built and maintained the broadcaster's internal systems and a high-traffic national online prize-draw project. Created rich, responsive interfaces with Vue.js, focused on intuitive UX and system scalability."
+      [[languages.en.params.experience.items]]
+        company = "Pasquali Solutions"
+        [[languages.en.params.experience.items.jobs]]
+          name = "Front-End Developer"
+          date = "Apr 2019 – Apr 2020"
+          content = "For the client Golaw, built the front-end of an ERP application, turning Figma layouts into dynamic components with React and Vue.js. Worked with design and back-end teams to define workflows focused on usability and efficiency."
+
+    [languages.en.params.projects]
+      [[languages.en.params.projects.items]]
+        title = "Pedala Sampa"
+        repo = "pedala-sampa"
+        language = "Vue 3 / Nuxt"
+        tagline = "collaborative map for São Paulo cyclists"
+        content = "Find cycling groups by region, day, time, level and pace on an interactive map. Migrated to Nuxt 3 with a *wayfinding* redesign and two themes (light/dark)."
+        badges = ["nuxt", "vue", "leaflet", "graphql", "typescript"]
+        [languages.en.params.projects.items.featured]
+          name = "project"
+          link = "https://pedalasampa.netlify.app"
+        [[languages.en.params.projects.items.links]]
+          icon = "fab fa-github"
+          url = "https://github.com/adams-alves-dev/pedala-sampa"
+      [[languages.en.params.projects.items]]
+        title = "Phantom: The Collector"
+        repo = "phantom-collector"
+        language = "TypeScript"
+        tagline = "retro 8-bit arcade game"
+        content = "Collect coins, dodge specters and clear stages. Arcade physics, chiptune audio generated via the Web Audio API and CRT screen effects."
+        badges = ["phaser3", "typescript", "vite", "tailwind"]
+        [languages.en.params.projects.items.featured]
+          name = "project"
+          link = "https://phantom-collector.netlify.app/"
+        [[languages.en.params.projects.items.links]]
+          icon = "fab fa-github"
+          url = "https://github.com/adamsalves/phantom-collector"
+      [[languages.en.params.projects.items]]
+        title = "Vue Planning Poker"
+        repo = "planning-pvoker"
+        language = "Vue 3"
+        tagline = "real-time planning poker for agile teams"
+        content = "Interactive table with live voting over WebSockets, customizable decks, consensus stats and history with charts."
+        badges = ["vue3", "socketio", "pinia", "typescript"]
+        [[languages.en.params.projects.items.links]]
+          icon = "fab fa-github"
+          url = "https://github.com/adamsalves/planning-pvoker"
+
+# ============================================================
+#  Português (default)
+# ============================================================
+[languages.pt]
+  label = "Português"
+  locale = "pt-BR"
+  weight = 1
+  title = "Adams Alves"
+
+  [languages.pt.params]
+    title = "Adams Alves"
+    description = "Engenheiro Front-End com mais de 6 anos construindo design systems, ERPs e dashboards de alta escala em React, Vue.js e TypeScript. De São Paulo, SP."
+
+    [languages.pt.params.hero]
+      intro = "olá, meu nome é"
+      subtitle = "Engenheiro Front-End"
+      location = "São Paulo, BR"
+      content = "Engenheiro Front-End com mais de 6 anos construindo design systems, ERPs e dashboards de alta escala com React, Vue.js e TypeScript. De São Paulo, SP."
+
+    [languages.pt.params.about]
+      content = """
+Sou Engenheiro Front-End com mais de 6 anos de experiência construindo design systems, ERPs e dashboards de alta escala. Especializado em React e Vue.js com TypeScript, com histórico de reduzir tempo de entrega e melhorar a experiência de desenvolvimento em equipes multidisciplinares — incluindo o design system por trás de um app com mais de 5 milhões de downloads na Google Play.
+
+Sou formado em Informática para Internet (Programação Web) pelo Colégio Técnico de Campinas (Cotuca – Unicamp) e leio e escrevo inglês com proficiência. Nas horas livres, curto videogames, esportes (futebol, basquete e bicicleta) e música."""
+
+    [languages.pt.params.contact]
+      title = "Vamos conversar?"
+      content = "Adoro trocar uma ideia e estou sempre por aqui. Se tiver uma pergunta ou só quiser dar um oi, farei o possível para responder!"
+      btnName = "enviar e-mail"
+      btnLink = "mailto:me@adamsalves.dev"
+
+    [languages.pt.params.experience]
+      enable = true
+      [[languages.pt.params.experience.items]]
+        company = "Compass.uol"
+        [[languages.pt.params.experience.items.jobs]]
+          name = "Engenheiro Front-End"
+          date = "nov 2021 – fev 2026"
+          content = "Front-end em produtos de múltiplos clientes. Liderei o design system da **Livelo** (React, React Native, TypeScript) para um app com mais de 5 milhões de downloads na Google Play — reduzindo em mais de 40% o tempo de entrega de features com componentes reutilizáveis e documentação de boas práticas, e atuando como referência técnica para equipes multidisciplinares. Também desenvolvi o backoffice nacional de distribuição de cartões da **Renner** em arquitetura de micro front-ends, e os dashboards de métricas e a plataforma de estudos online da **EducaCross**."
+      [[languages.pt.params.experience.items]]
+        company = "RedeTV!"
+        [[languages.pt.params.experience.items.jobs]]
+          name = "Engenheiro Front-End"
+          date = "set 2020 – out 2021"
+          content = "Desenvolvi e mantive sistemas internos da emissora e participei de um projeto nacional de sorteio de prêmios online com alto volume de acessos simultâneos. Criei interfaces ricas e responsivas com Vue.js, com foco em UX intuitiva e escalabilidade do sistema."
+      [[languages.pt.params.experience.items]]
+        company = "Pasquali Solutions"
+        [[languages.pt.params.experience.items.jobs]]
+          name = "Desenvolvedor Front-End"
+          date = "abr 2019 – abr 2020"
+          content = "Para o cliente Golaw, implementei o front-end de uma aplicação ERP, convertendo layouts do Figma em componentes dinâmicos com React e Vue.js. Colaborei com as equipes de design e back-end na definição de fluxos de trabalho, com foco em usabilidade e eficiência."
+
+    [languages.pt.params.projects]
+      [[languages.pt.params.projects.items]]
+        title = "Pedala Sampa"
+        repo = "pedala-sampa"
+        language = "Vue 3 / Nuxt"
+        tagline = "mapa colaborativo para ciclistas de São Paulo"
+        content = "Encontre grupos de pedal por região, dia, horário, nível e ritmo num mapa interativo. Migração para Nuxt 3 com redesign de direção *wayfinding* e dois temas (claro/escuro)."
+        badges = ["nuxt", "vue", "leaflet", "graphql", "typescript"]
+        [languages.pt.params.projects.items.featured]
+          name = "projeto"
+          link = "https://pedalasampa.netlify.app"
+        [[languages.pt.params.projects.items.links]]
+          icon = "fab fa-github"
+          url = "https://github.com/adams-alves-dev/pedala-sampa"
+      [[languages.pt.params.projects.items]]
+        title = "Phantom: The Collector"
+        repo = "phantom-collector"
+        language = "TypeScript"
+        tagline = "jogo retro arcade 8-bit"
+        content = "Colete moedas, desvie de espectros e avance de fase. Física Arcade, áudio chiptune gerado via Web Audio API e efeitos CRT na tela."
+        badges = ["phaser3", "typescript", "vite", "tailwind"]
+        [languages.pt.params.projects.items.featured]
+          name = "projeto"
+          link = "https://phantom-collector.netlify.app/"
+        [[languages.pt.params.projects.items.links]]
+          icon = "fab fa-github"
+          url = "https://github.com/adamsalves/phantom-collector"
+      [[languages.pt.params.projects.items]]
+        title = "Vue Planning Poker"
+        repo = "planning-pvoker"
+        language = "Vue 3"
+        tagline = "planning poker em tempo real para times ágeis"
+        content = "Mesa interativa com votação ao vivo via WebSockets, baralhos customizáveis, estatísticas de consenso e histórico com gráficos."
+        badges = ["vue3", "socketio", "pinia", "typescript"]
+        [[languages.pt.params.projects.items.links]]
+          icon = "fab fa-github"
+          url = "https://github.com/adamsalves/planning-pvoker"
