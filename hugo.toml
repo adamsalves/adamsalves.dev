@@ -34,7 +34,7 @@ summaryLength = 30
   terminalUser = "adams@portfolio"
   allowIndexing = false      # index in production only; noindex on previews/dev
   # favicon = "/favicon.svg" # the theme ships a favicon; set to override
-  # ogImage = "/img/og.png"  # default image for Open Graph/Twitter
+  ogImage = "/images/og.png" # default image for Open Graph/Twitter (1200x630)
   # twitter = "adamsalves"   # handle (without @) for twitter:site
 
   [params.navbar]

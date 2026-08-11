@@ -1,8 +1,8 @@
 +++
-title = "Hello, world: the portfolio is live — and a Hugo theme came out of it"
+title = "Hello, world: the portfolio is live — and a Hugo theme"
 date = 2026-08-11
 draft = false
-description = "I shipped adamsalves.dev, tidied up my GitHub profile, and the theme that came out of the project ended up as terminal-mono, released under the MIT license."
+description = "I shipped adamsalves.dev, tidied up my GitHub profile, and the theme that came out of it ended up as terminal-mono, released under MIT."
 tags = ["hugo", "portfolio", "open-source"]
 toc = false
 +++
@@ -17,12 +17,12 @@ The idea was to get away from the generic template without going overboard: dark
 
 ## The GitHub profile
 
-I took the chance to tidy up my [GitHub](https://github.com/adamsalves) too. The README now has a short summary of what I do and the stack I work with day to day (React, Vue 3, TypeScript, Next.js, Nuxt, React Native, Node.js — plus Go, which is next on my list), and I pinned the projects I actually enjoy showing people:
+I took the chance to tidy up my [GitHub](https://github.com/adamsalves) too. The README now has a short summary of what I do and the stack I work with day to day (React, Vue 3, TypeScript, Next.js, Nuxt, React Native, Node.js — plus Go, which I'm picking up right now), and I pinned the projects I actually enjoy showing people:
 
-- **pedala-sampa**, a collaborative map for São Paulo cyclists, built with Vue 3 / Nuxt, Leaflet and GraphQL;
-- **phantom-collector**, an 8-bit arcade game in Phaser 3 where the chiptune audio is generated on the fly by the Web Audio API;
-- **planning-pvoker**, real-time planning poker over WebSockets, with consensus stats;
-- **terminal-mono**, this site's theme — which is what the next section is about.
+- [**pedala-sampa**](https://github.com/adams-alves-dev/pedala-sampa), a collaborative map for São Paulo cyclists, built with Vue 3 / Nuxt, Leaflet and GraphQL;
+- [**phantom-collector**](https://github.com/adamsalves/phantom-collector), an 8-bit arcade game in Phaser 3 where the chiptune audio is generated on the fly by the Web Audio API;
+- [**planning-pvoker**](https://github.com/adamsalves/planning-pvoker), real-time planning poker over WebSockets, with consensus stats;
+- [**terminal-mono**](https://github.com/adamsalves/terminal-mono), this site's theme — which is what the next section is about.
 
 ## terminal-mono
 

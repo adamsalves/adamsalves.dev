@@ -17,12 +17,12 @@ A ideia foi escapar do template genérico sem inventar demais: tema escuro, font
 
 ## O perfil no GitHub
 
-Aproveitei a virada pra arrumar a casa no [GitHub](https://github.com/adamsalves). O README ganhou um resumo do que eu faço e da stack do dia a dia (React, Vue 3, TypeScript, Next.js, Nuxt, React Native, Node.js — e Go, que está na fila de estudos), e no topo deixei fixado o que eu realmente gosto de mostrar:
+Aproveitei a virada pra arrumar a casa no [GitHub](https://github.com/adamsalves). O README ganhou um resumo do que eu faço e da stack do dia a dia (React, Vue 3, TypeScript, Next.js, Nuxt, React Native, Node.js — e Go, que estou começando a estudar), e no topo deixei fixado o que eu realmente gosto de mostrar:
 
-- **pedala-sampa**, um mapa colaborativo pra ciclistas de São Paulo, em Vue 3 / Nuxt com Leaflet e GraphQL;
-- **phantom-collector**, um arcade 8-bit em Phaser 3 onde o som chiptune é gerado na hora pela Web Audio API;
-- **planning-pvoker**, um planning poker em tempo real via WebSockets, com estatísticas de consenso;
-- **terminal-mono**, o tema deste site — que é o assunto do próximo tópico.
+- [**pedala-sampa**](https://github.com/adams-alves-dev/pedala-sampa), um mapa colaborativo pra ciclistas de São Paulo, em Vue 3 / Nuxt com Leaflet e GraphQL;
+- [**phantom-collector**](https://github.com/adamsalves/phantom-collector), um arcade 8-bit em Phaser 3 onde o som chiptune é gerado na hora pela Web Audio API;
+- [**planning-pvoker**](https://github.com/adamsalves/planning-pvoker), um planning poker em tempo real via WebSockets, com estatísticas de consenso;
+- [**terminal-mono**](https://github.com/adamsalves/terminal-mono), o tema deste site — que é o assunto do próximo tópico.
 
 ## terminal-mono
 
