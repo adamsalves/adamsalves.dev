@@ -28,13 +28,14 @@ Aproveitei a virada pra arrumar a casa no [GitHub](https://github.com/adamsalves
 
 Esse não estava no plano. No meio do caminho eu percebi que o tema não dependia de nada meu: o conteúdo todo vem de `params`, as cores e fontes saem de variáveis CSS. Pra outra pessoa usar, bastava editar um arquivo de config. Aí não fazia muito sentido deixar ele preso aqui dentro.
 
-Separei num repositório próprio, escrevi a documentação, montei um `exampleSite` bilíngue pra servir de referência e soltei sob licença MIT: [terminal-mono](https://github.com/adamsalves/terminal-mono), hoje na v0.2.0.
+Separei num repositório próprio, escrevi a documentação, montei um `exampleSite` bilíngue pra servir de referência e soltei sob licença MIT: [terminal-mono](https://github.com/adamsalves/terminal-mono) — com [releases versionadas](https://github.com/adamsalves/terminal-mono/releases), caso você prefira fixar uma versão específica.
 
 O que já vem resolvido: o hero com efeito de máquina de escrever, que degrada direitinho quando não tem JS; o blog inteiro, com paginação, índice, tags, barra de progresso de leitura e compartilhamento; i18n com português e inglês inclusos; SEO (Open Graph, JSON-LD, RSS, `canonical`); acessibilidade (*skip link*, foco visível, `prefers-reduced-motion`); e o pipeline de assets do Hugo com minify, fingerprint e SRI em produção.
 
-Instalar dá uma linha, via Hugo Modules:
+Instalar é rápido, via Hugo Modules:
 
 ```bash
+hugo mod init github.com/seu-usuario/seu-site   # se você ainda não usa modules
 hugo mod get github.com/adamsalves/terminal-mono
 ```
 
