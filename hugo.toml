@@ -26,6 +26,41 @@ summaryLength = 30
     ordered = false
 
 # ============================================================
+#  Nav menu — ordered by `weight`, mirroring the order the home page renders
+#  its sections (projects, about, experience, contact). The theme's default
+#  order leads with about, so the nav and the page disagreed on what comes
+#  first. Section order lives in the theme's layout: reordering here moves the
+#  menu, not the page.
+#
+#  One block serves both languages. The `identifier` doubles as the i18n key,
+#  so "about" renders as "sobre" in PT and "about" in EN without repeating the
+#  menu per language. Setting `name` would override the label with a literal
+#  string and disable that translation — which is why none of these set it.
+# ============================================================
+[[menu.main]]
+  identifier = "projects"
+  url = "#projects"          # anchors resolve against the language's home
+  weight = 10
+[[menu.main]]
+  identifier = "about"
+  url = "#about"
+  weight = 20
+[[menu.main]]
+  identifier = "experience"
+  url = "#experience"
+  weight = 30
+[[menu.main]]
+  identifier = "blog"
+  pageRef = "/blogs"         # pageRef, not url: resolves per language, so PT
+                             # links to /blogs/ and EN to /en/blogs/. Stays
+                             # hidden while a language has no posts.
+  weight = 40
+[[menu.main]]
+  identifier = "contact"
+  url = "#contact"
+  weight = 50
+
+# ============================================================
 #  Shared (non-translatable) params — merged into every language.
 # ============================================================
 [params]
