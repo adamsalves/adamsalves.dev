@@ -1,11 +1,25 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "hugo",
-  "buildCommand": "hugo --gc --minify",
+  "buildCommand": "hugo --gc --minify --environment ${VERCEL_ENV:-production}",
   "outputDirectory": "public",
   "build": {
     "env": {
       "HUGO_VERSION": "0.163.3"
     }
-  }
+  },
+  "headers": [
+    {
+      "source": "/(css|js)/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/fonts/(.*).woff2",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ]
 }

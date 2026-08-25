@@ -58,6 +58,14 @@ Most of the page content (hero, about, experience, projects, contact) lives in t
 `[languages.en.params.*]` and `[languages.pt.params.*]` tables in
 [`hugo.toml`](./hugo.toml) — edit there to update the site copy.
 
+`[[menu.main]]` sets both the nav order and the order the home page renders its
+sections, so a section dropped from the menu is dropped from the page.
+
+Alongside the HTML, the build publishes `/llms.txt`, `/llms-full.txt` and an
+`index.md` twin per post — the files answer engines read instead of crawling —
+declared in the `[outputs]` block. `[params.aeo]` controls which AI crawlers
+`robots.txt` lets in: answer engines are allowed, training crawlers are not.
+
 ## Deployment
 
 The site is deployed on **Vercel** and rebuilds automatically on every push to the
@@ -68,6 +76,18 @@ default branch. Build settings are committed to the repo in [`vercel.json`](./ve
 - `outputDirectory`: `public`
 - `HUGO_VERSION` is pinned via `build.env` so Vercel builds with the same Hugo
   version as local development. Bump it there when upgrading Hugo.
+- `buildCommand` passes `--environment ${VERCEL_ENV:-production}`, which maps
+  Vercel's `production` / `preview` / `development` straight onto Hugo's
+  environment. This is what keeps preview deploys out of the index: `hugo`
+  (unlike `hugo server`) defaults to `production` when the flag is absent, so
+  without it `hugo.IsProduction` is true on every deploy and `[params]
+  allowIndexing = false` never takes effect. A preview then publishes an open
+  `robots.txt`, no `noindex`, and a `Sitemap:` line pointing at the production
+  domain.
+- `headers` serves `/css/*`, `/js/*` and `/fonts/*.woff2` as
+  `max-age=31536000, immutable`. All three are immutable by construction — the
+  CSS and JS carry a SHA-256 of their contents in the filename and the fonts
+  carry the font's version — so a change always produces a different URL.
 
 The theme submodule (`terminal-mono`) is public, so Vercel fetches it automatically
 during the clone step — no extra configuration required.

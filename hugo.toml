@@ -12,6 +12,21 @@ summaryLength = 30
 [taxonomies]
   tag = "tags"
 
+# ============================================================
+#  Output formats — the theme defines LLMS, LLMSFULL and MARKDOWN, but Hugo's
+#  default config merge does not bring a theme's [outputs] into the site's, so
+#  the block has to live here. It publishes /llms.txt (the AEO index),
+#  /llms-full.txt (every post's markdown in one file) and an index.md twin next
+#  to each post's HTML — per language, so EN gets /en/llms.txt with its own list.
+#
+#  Naming any format for a page kind REPLACES the default list for that kind:
+#  "RSS" is restated on purpose, because leaving it out kills the feed.
+#  Kinds not named here (section, taxonomy, term) keep their defaults.
+# ============================================================
+[outputs]
+  home = ["HTML", "RSS", "LLMS", "LLMSFULL"]
+  page = ["HTML", "MARKDOWN"]
+
 [markup]
   [markup.goldmark.renderer]
     unsafe = true
@@ -67,10 +82,23 @@ summaryLength = 30
   showScanlines = true       # CRT scanline overlay
   readingProgress = true     # reading-progress bar on posts
   terminalUser = "adams@portfolio"
-  allowIndexing = false      # index in production only; noindex on previews/dev
+  # Only a production build is indexable. This depends on vercel.json passing
+  # --environment: `hugo` (unlike `hugo server`) defaults to production when the
+  # flag is absent, which made hugo.IsProduction true on preview deploys too and
+  # left this param inert — every preview was crawlable, with a Sitemap: line
+  # pointing at the production domain.
+  allowIndexing = false
   # favicon = "/favicon.svg" # the theme ships a favicon; set to override
   ogImage = "/images/og.png" # default image for Open Graph/Twitter (1200x630)
   # twitter = "adamsalves"   # handle (without @) for twitter:site
+
+  # AI crawlers, in two groups robots.txt keeps separate because they are not
+  # the same request. Answer engines fetch a page to answer a question now and
+  # cite the source back to the reader; dataset crawlers collect it into a
+  # corpus with no citation and no referral. Both default to `true`.
+  [params.aeo]
+    allowAI = true         # OAI-SearchBot, Claude-User, PerplexityBot, Applebot…
+    allowTraining = false  # GPTBot, ClaudeBot, CCBot, Google-Extended…
 
   [params.navbar]
     brandName = "adamsalves"
@@ -146,6 +174,19 @@ I studied Web Programming at Colégio Técnico de Campinas (Cotuca – Unicamp),
           content = "For the client Golaw, built the front-end of an ERP application, turning Figma layouts into dynamic components with React and Vue.js. Worked with design and back-end teams to define workflows focused on usability and efficiency."
 
     [languages.en.params.projects]
+      [[languages.en.params.projects.items]]
+        title = "Terminal Mono"
+        repo = "terminal-mono"
+        language = "Hugo / Go"
+        tagline = "the Hugo theme this site runs on"
+        content = "Dark, monospace theme for portfolio and blog: animated terminal hero, repository-style project cards, bilingual posts, five palettes and answer-engine output (llms.txt, JSON-LD, robots.txt). No third-party JavaScript — and no third-party request at all. Published under MIT."
+        badges = ["hugo", "go", "css", "a11y", "i18n"]
+        [languages.en.params.projects.items.featured]
+          name = "demo"
+          link = "https://adamsalves.github.io/terminal-mono/"
+        [[languages.en.params.projects.items.links]]
+          icon = "fab fa-github"
+          url = "https://github.com/adamsalves/terminal-mono"
       [[languages.en.params.projects.items]]
         title = "Pedala Sampa"
         repo = "pedala-sampa"
@@ -236,6 +277,19 @@ Sou formado em Informática para Internet (Programação Web) pelo Colégio Téc
           content = "Para o cliente Golaw, implementei o front-end de uma aplicação ERP, convertendo layouts do Figma em componentes dinâmicos com React e Vue.js. Colaborei com as equipes de design e back-end na definição de fluxos de trabalho, com foco em usabilidade e eficiência."
 
     [languages.pt.params.projects]
+      [[languages.pt.params.projects.items]]
+        title = "Terminal Mono"
+        repo = "terminal-mono"
+        language = "Hugo / Go"
+        tagline = "o tema Hugo que roda este site"
+        content = "Tema dark e monoespaçado para portfólio e blog: hero com terminal animado, cards em estilo repositório, posts bilíngues, cinco paletas e saída para *answer engines* (llms.txt, JSON-LD, robots.txt). Sem JavaScript de terceiros — e sem nenhuma requisição externa. Publicado sob licença MIT."
+        badges = ["hugo", "go", "css", "a11y", "i18n"]
+        [languages.pt.params.projects.items.featured]
+          name = "demo"
+          link = "https://adamsalves.github.io/terminal-mono/"
+        [[languages.pt.params.projects.items.links]]
+          icon = "fab fa-github"
+          url = "https://github.com/adamsalves/terminal-mono"
       [[languages.pt.params.projects.items]]
         title = "Pedala Sampa"
         repo = "pedala-sampa"
