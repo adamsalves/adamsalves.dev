@@ -135,7 +135,9 @@ summaryLength = 30
     # aeo.js reports "Crawled 3 page(s)" here, two of which are sitemaps. The
     # per-language sitemaps stay published either way.
     #
-    # Needs terminal-mono > v0.6.0; inert until the submodule is bumped.
+    # Site-wide, not per language: /sitemap.xml is one file. terminal-mono
+    # reads it from the first language by weight and warns if another one
+    # disagrees, so it belongs here at the root and nowhere else.
     flatSitemap = true
 
   [params.navbar]
