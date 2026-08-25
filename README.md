@@ -76,6 +76,14 @@ default branch. Build settings are committed to the repo in [`vercel.json`](./ve
 - `outputDirectory`: `public`
 - `HUGO_VERSION` is pinned via `build.env` so Vercel builds with the same Hugo
   version as local development. Bump it there when upgrading Hugo.
+- `buildCommand` passes `--environment ${VERCEL_ENV:-production}`, which maps
+  Vercel's `production` / `preview` / `development` straight onto Hugo's
+  environment. This is what keeps preview deploys out of the index: `hugo`
+  (unlike `hugo server`) defaults to `production` when the flag is absent, so
+  without it `hugo.IsProduction` is true on every deploy and `[params]
+  allowIndexing = false` never takes effect. A preview then publishes an open
+  `robots.txt`, no `noindex`, and a `Sitemap:` line pointing at the production
+  domain.
 - `headers` serves `/css/*`, `/js/*` and `/fonts/*.woff2` as
   `max-age=31536000, immutable`. All three are immutable by construction — the
   CSS and JS carry a SHA-256 of their contents in the filename and the fonts

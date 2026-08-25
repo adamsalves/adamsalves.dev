@@ -82,7 +82,12 @@ summaryLength = 30
   showScanlines = true       # CRT scanline overlay
   readingProgress = true     # reading-progress bar on posts
   terminalUser = "adams@portfolio"
-  allowIndexing = false      # index in production only; noindex on previews/dev
+  # Only a production build is indexable. This depends on vercel.json passing
+  # --environment: `hugo` (unlike `hugo server`) defaults to production when the
+  # flag is absent, which made hugo.IsProduction true on preview deploys too and
+  # left this param inert — every preview was crawlable, with a Sitemap: line
+  # pointing at the production domain.
+  allowIndexing = false
   # favicon = "/favicon.svg" # the theme ships a favicon; set to override
   ogImage = "/images/og.png" # default image for Open Graph/Twitter (1200x630)
   # twitter = "adamsalves"   # handle (without @) for twitter:site
