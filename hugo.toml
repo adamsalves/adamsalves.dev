@@ -6,6 +6,34 @@ enableRobotsTXT = true
 enableEmoji = true
 summaryLength = 30
 
+# ============================================================
+#  Keep the quotes the HTML minifier would drop.
+#
+#  `hugo --minify` (vercel.json) emits valid HTML5 with unquoted attribute
+#  values — `rel=canonical`, `name=description`, `type=application/ld+json`.
+#  Browsers and Google parse that correctly. A number of smaller crawlers and
+#  scoring tools do not: they match attributes with regexes that require the
+#  quotes, so they report the page has no meta description, no canonical and no
+#  structured data at all. `npx aeo.js check` v0.0.16 is one — with the quotes
+#  gone it scores this site 0/20 on Schema Presence with two valid JSON-LD
+#  blocks on the page, and drops two of the five Meta Quality checks.
+#
+#  The raw cost on this site's home page is 500 bytes (14,694 -> 15,194), which
+#  is the number that reads as expensive and is not the one anyone pays. Vercel
+#  serves this with `content-encoding: br`, and repeated quotes around repeated
+#  attribute names are close to the most compressible text a page can hold:
+#
+#    gzip -9     4,477 -> 4,514   +37
+#    brotli q5   4,267 -> 4,275    +8
+#    brotli q11  3,896 -> 3,866   -30   ← the quoted page is *smaller*
+#
+#  So over the wire this costs nothing, and at a high brotli quality it pays for
+#  itself. The cheapest 12 points on that scorecard by some distance.
+# ============================================================
+[minify]
+  [minify.tdewolff.html]
+    keepQuotes = true
+
 [pagination]
   pagerSize = 5
 
@@ -99,6 +127,18 @@ summaryLength = 30
   [params.aeo]
     allowAI = true         # OAI-SearchBot, Claude-User, PerplexityBot, Applebot…
     allowTraining = false  # GPTBot, ClaudeBot, CCBot, Google-Extended…
+    # /sitemap.xml as one flat <urlset> instead of Hugo's <sitemapindex>. The
+    # index is the standard shape for a bilingual site and Google follows it,
+    # but a crawler that does not know to descend into it reads the two <loc>s
+    # and audits *those* as pages — /pt/sitemap.xml and /en/sitemap.xml, which
+    # are XML with no title and no prose — and never opens a page of the site.
+    # aeo.js reports "Crawled 3 page(s)" here, two of which are sitemaps. The
+    # per-language sitemaps stay published either way.
+    #
+    # Site-wide, not per language: /sitemap.xml is one file. terminal-mono
+    # reads it from the first language by weight and warns if another one
+    # disagrees, so it belongs here at the root and nowhere else.
+    flatSitemap = true
 
   [params.navbar]
     brandName = "adamsalves"
