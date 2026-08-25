@@ -71,13 +71,31 @@ A `check_contrast.py` went into CI alongside it. It asserts three properties of 
 
 The other half of the audit was AEO — Answer Engine Optimization, the new acronym for "what happens when the thing reading your page is a model answering someone's question."
 
-The diagnosis was short and ugly:
+I didn't diagnose that half on my own. I ran the [aeo.js](https://aeojs.org/) checker against the theme's demo:
+
+```bash
+npx aeo.js check https://adamsalves.github.io/terminal-mono/
+```
+
+```
+GEO Readiness Score: 55/100 (Fair)
+
+AI Access:          11/20   ###########.........
+Content Structure:  20/20   ####################
+Schema Presence:     0/20   ....................
+Meta Quality:       12/20   ############........
+Citability:         12/20   ############........
+```
+
+And the diagnosis was right, item for item:
 
 - `robots.txt` was Hugo's default stub, literally `User-agent: *` and nothing else, with no `Sitemap:` line;
 - there was no `llms.txt` and no `llms-full.txt`, 404 on both;
 - JSON-LD came out on the home page only, and only as `Person`. Posts never said they were posts. That's where the zero on Schema Presence came from.
 
-The theme builds with `hugo` and nothing else, and aeo.js is a 6.5 MB npm package with no Hugo integration — adopting it as a build dependency would mean bringing Node in, and the "Human/AI" widget it injects contradicts the "no third-party JS" that sits in the README, in `theme.toml` and in the repository description. So I implemented the outputs natively in Hugo and use the checker only as a checker.
+Without it I'd have had a hunch that "some AEO thing" was missing, and no list. The five axes are what turned the hunch into work: "AI Access" and "Schema Presence" are different questions with different answers, and a single number would have hidden that one sat at 55% while the other sat at zero.
+
+Implementing it, though, was by hand. The why comes further down.
 
 `robots.txt` now names the AI crawlers in two groups, because they aren't the same request. An answer engine fetches the page to answer a question now and hands the citation back to the reader: `OAI-SearchBot`, `Claude-User`, `PerplexityBot`, `Applebot` and six more. A dataset crawler collects the page into a corpus, with no citation and no referral: `GPTBot`, `ClaudeBot`, `Google-Extended`, `CCBot` and four more. `[params.aeo] allowAI` and `allowTraining` switch the two independently, both defaulting to `true` — which is what the bare `User-agent: *` already meant, so upgrading the theme doesn't change what your site publishes behind your back.
 
@@ -103,13 +121,29 @@ Posts in `llms-full.txt` are separated by a `--- post: <url> ---` line rather th
 
 And all three honour `[params.aeo] disallow` and the same build condition `robots.txt` uses. A path excluded from crawlers whose full body sits in `llms-full.txt` is not excluded, and answer engines are the audience that key names.
 
-## The checker gets things wrong too
+## aeo.js found all of it, and didn't speak Hugo
 
-Worth saying, because I lost time to it: part of the distance between 55 and 100 was the checker's bug, not the theme's.
+Two separate things, and it's fair to separate them: the tool got the whole diagnosis right, and it had no way to carry out the fix here.
 
-aeo.js failed "Canonical URL set", "JSON-LD schema found" and "Description length" — all three correct on the site. Its regexes require quoted attributes, and `hugo --minify` emits `rel=canonical` unquoted, which is valid HTML5. It also scans `new URL(target).origin`, so a site published under a sub-path gets scored on files it can't even see.
+The package's `exports` cover `next`, `nuxt`, `astro`, `vite`, `react`, `vue`, `angular`, `webpack`, `eleventy`, `sveltekit`, `vitepress`, `docusaurus`, `remix` and `tanstack-start`. Fourteen integrations, all of them in the JS ecosystem. Hugo is a Go binary and isn't on the list — which isn't an oversight: there's no plugin point in a `hugo build` where an npm package fits.
 
-The score prints to the deploy job's summary with those two limits printed next to it. As information, never as a gate. The check that counts is the repo's own `check_aeo.py`, which runs against the bytes about to go out.
+So the generating half of the tool had nothing to attach to. What was left was adopting it as a build dependency, which means bringing Node and 6.5 MB of `node_modules` into a theme whose only requirement is `hugo`. And the "Human/AI" widget it injects into the page contradicts the "no third-party JS" that sits in the README, in `theme.toml` and in the repository description. Trading one of the theme's promises for a badge didn't look like a deal.
+
+So I built the outputs natively. Custom Output Formats handle `llms.txt` and `llms-full.txt`, a `layouts/robots.txt` handles the rest, and JSON-LD is a template. No new dependency.
+
+That left `npx aeo.js check` as the verification — and there the second mismatch turned up. It failed "Canonical URL set", "JSON-LD schema found" and "Description length", all three correct on the site and checked by hand. Its regexes require quoted attributes:
+
+```js
+/<link[^>]+rel=["']canonical["']/i
+```
+
+and `hugo --minify` emits `rel=canonical` unquoted, which is valid HTML5. The tool assumes unminified output, and minifying is what Hugo does by default in production. It also scans `new URL(target).origin` rather than the path you handed it, so a project site under a sub-path — the theme's demo is one — ends up scored on files at the host root that belong to a different deploy.
+
+None of that is a construction defect. It's a tool written for a world where the build is JS and the HTML reaches the browser as it was written, and both premises are false on a Hugo site in production. Part of the distance between 55 and 100 was never mine to close.
+
+The score still prints to the deploy job's summary with those two limits printed next to it, as information and never as a gate. What counts is the repo's own `check_aeo.py`, which reads the bytes about to go out and knows they're minified.
+
+If your site is Next, Astro or SvelteKit, none of this touches you: you install it and it does both halves. The mismatch is with Hugo, not with the tool.
 
 ## Where this is now
 

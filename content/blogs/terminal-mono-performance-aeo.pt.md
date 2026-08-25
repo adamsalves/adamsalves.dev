@@ -71,13 +71,31 @@ Entrou junto um `check_contrast.py` no CI. Ele afirma três coisas sobre as cinc
 
 A outra metade da auditoria era AEO — Answer Engine Optimization, a sigla nova pra "o que acontece quando quem lê a sua página é um modelo respondendo a pergunta de alguém".
 
-O diagnóstico era curto e feio:
+Essa metade eu não diagnostiquei sozinho. Rodei o checker do [aeo.js](https://aeojs.org/) contra o demo do tema:
+
+```bash
+npx aeo.js check https://adamsalves.github.io/terminal-mono/
+```
+
+```
+GEO Readiness Score: 55/100 (Fair)
+
+AI Access:          11/20   ###########.........
+Content Structure:  20/20   ####################
+Schema Presence:     0/20   ....................
+Meta Quality:       12/20   ############........
+Citability:         12/20   ############........
+```
+
+E o diagnóstico estava certo, item por item:
 
 - o `robots.txt` era o stub padrão do Hugo, literalmente `User-agent: *` e nada mais, sem linha `Sitemap:`;
 - não existia `llms.txt` nem `llms-full.txt`, 404 nos dois;
 - o JSON-LD saía só na home e só como `Person`. Os posts não diziam que eram posts. Daí o zero em Schema Presence.
 
-O tema builda com `hugo` e nada mais, e o aeo.js é pacote npm de 6,5 MB sem integração Hugo — adotá-lo como dependência de build significaria trazer Node pra dentro, e o widget "Human/AI" que ele injeta contradiz o "no third-party JS" que está no README, no `theme.toml` e na descrição do repositório. Então implementei as saídas nativamente em Hugo e uso o checker só como verificador.
+Sem isso eu teria a intuição de que faltava "alguma coisa de AEO" e nenhuma lista. Os cinco eixos são o que transformou intuição em trabalho: "AI Access" e "Schema Presence" são perguntas diferentes com respostas diferentes, e uma nota única teria escondido que uma estava em 55% e a outra em zero.
+
+Implementar, porém, foi na mão. O porquê vem mais abaixo.
 
 O `robots.txt` agora nomeia os crawlers de IA em dois grupos, porque não são o mesmo pedido. Answer engine busca a página pra responder uma pergunta agora e devolve a citação pro leitor: `OAI-SearchBot`, `Claude-User`, `PerplexityBot`, `Applebot` e mais seis. Crawler de dataset coleta a página pro corpus, sem citação e sem referral: `GPTBot`, `ClaudeBot`, `Google-Extended`, `CCBot` e mais quatro. `[params.aeo] allowAI` e `allowTraining` ligam e desligam os dois de forma independente, os dois com default `true` — que é o que o `User-agent: *` pelado já queria dizer, então atualizar o tema não muda em silêncio o que o seu site publica.
 
@@ -103,13 +121,29 @@ Os posts no `llms-full.txt` são separados por uma linha `--- post: <url> ---` e
 
 E todos os três respeitam o `[params.aeo] disallow` e a mesma condição de build que o `robots.txt` usa. Um caminho excluído dos crawlers cujo corpo inteiro está no `llms-full.txt` não está excluído, e answer engine é justamente a audiência que a chave nomeia.
 
-## O checker também erra
+## O aeo.js achou tudo, e não falava Hugo
 
-Vale dizer, porque eu perdi tempo com isso: parte da distância entre 55 e 100 era bug do verificador, não do tema.
+Duas coisas separadas, e é justo separar: a ferramenta acertou o diagnóstico inteiro, e não tinha como executar a correção aqui.
 
-O aeo.js reprovou "Canonical URL set", "JSON-LD schema found" e "Description length" — os três corretos no site. As regex dele exigem atributo com aspas, e `hugo --minify` emite `rel=canonical` sem aspas, que é HTML5 válido. Ele também varre `new URL(target).origin`, então um site publicado sob subcaminho é avaliado em arquivos que ele nem consegue ver.
+Os `exports` do pacote cobrem `next`, `nuxt`, `astro`, `vite`, `react`, `vue`, `angular`, `webpack`, `eleventy`, `sveltekit`, `vitepress`, `docusaurus`, `remix` e `tanstack-start`. Quatorze integrações, todas do ecossistema JS. Hugo é um binário Go e não está na lista — o que não é descuido: não existe ponto de plugin num `hugo build` onde um pacote npm encaixe.
 
-O score sai no summary do job de deploy, com essas duas limitações impressas do lado. Como informação, nunca como gate. O check que manda é o `check_aeo.py` do próprio repo, que roda sobre os bytes que estão indo pro ar.
+Então a metade geradora da ferramenta não tinha onde encostar. Sobrava adotá-la como dependência de build, o que significa trazer Node e 6,5 MB de `node_modules` pra um tema cujo único requisito é `hugo`. E o widget "Human/AI" que ela injeta na página contradiz o "no third-party JS" que está no README, no `theme.toml` e na descrição do repositório. Trocar uma promessa do tema por um selo não me pareceu negócio.
+
+Fiz as saídas nativamente, então. Custom Output Formats dão conta de `llms.txt` e `llms-full.txt`, um `layouts/robots.txt` dá conta do resto, e JSON-LD é template. Nenhuma dependência nova.
+
+Restou o `npx aeo.js check` como conferência — e aí apareceu o segundo desencontro. Ele reprovou "Canonical URL set", "JSON-LD schema found" e "Description length", os três corretos no site e conferidos à mão. As regex dele exigem atributo com aspas:
+
+```js
+/<link[^>]+rel=["']canonical["']/i
+```
+
+e `hugo --minify` emite `rel=canonical` sem aspas, que é HTML5 válido. A ferramenta assume saída não minificada, e minificar é o que o Hugo faz por padrão em produção. Ele também varre `new URL(target).origin` em vez do caminho que você passou, então um project site sob subcaminho — o demo do tema é um — acaba avaliado nos arquivos da raiz do host, que pertencem a outro deploy.
+
+Nada disso é defeito de construção. É uma ferramenta escrita pra um mundo onde o build é JS e o HTML chega ao browser como foi escrito, e as duas premissas são falsas num site Hugo em produção. Parte da distância entre 55 e 100 nunca foi minha pra fechar.
+
+O score segue saindo no summary do job de deploy, com essas duas limitações impressas do lado, como informação e nunca como gate. Quem manda é o `check_aeo.py` do próprio repo, que lê os bytes que estão indo pro ar e sabe que eles estão minificados.
+
+Se o seu site é Next, Astro ou SvelteKit, nada disso te atinge: você instala e ela faz os dois lados. O desencontro é com Hugo, não com a ferramenta.
 
 ## Onde isso está agora
 
