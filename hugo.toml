@@ -172,13 +172,15 @@ summaryLength = 30
 
   [languages.en.params]
     title = "Adams Alves"
-    description = "Front-End Engineer with 6+ years building design systems, ERPs and high-scale dashboards in React, Vue.js and TypeScript. Based in São Paulo, Brazil."
+    description = "AI and Front-End Engineer. 6+ years building design systems, ERPs and high-scale dashboards in React, Vue.js and TypeScript, and the agent workflows that ship alongside them. Based in São Paulo, Brazil."
 
     [languages.en.params.hero]
-      intro = "hi, my name is"
-      subtitle = "Front-End Engineer"
+      fuseSubtitle = true
+      tagline = "São Paulo, Brazil. Remote, overlapping EU and US hours."
+      intro = ""             # fused headline: "hi, my name is" would introduce a job title too
+      subtitle = "AI and Front-End Engineer"
       location = "São Paulo, Brazil"
-      content = "Front-End Engineer with 6+ years building design systems, ERPs and high-scale dashboards with React, Vue.js and TypeScript. Based in São Paulo, Brazil."
+      content = "6+ years building design systems, ERPs and high-scale dashboards with React, Vue.js and TypeScript — and now the systems that put AI to work on top of them: context as a budget, retrieval before generation, verification before acceptance."
 
     [languages.en.params.about]
       content = """
@@ -275,13 +277,15 @@ I studied Web Programming at Colégio Técnico de Campinas (Cotuca – Unicamp),
 
   [languages.pt.params]
     title = "Adams Alves"
-    description = "Engenheiro Front-End com mais de 6 anos construindo design systems, ERPs e dashboards de alta escala em React, Vue.js e TypeScript. De São Paulo, SP."
+    description = "Engenheiro de IA e Front-End. Mais de 6 anos construindo design systems, ERPs e dashboards de alta escala em React, Vue.js e TypeScript, e os fluxos com agentes que entregam junto. De São Paulo, SP."
 
     [languages.pt.params.hero]
-      intro = "olá, meu nome é"
-      subtitle = "Engenheiro Front-End"
+      fuseSubtitle = true
+      tagline = "São Paulo, BR. Remoto, com fuso compatível com Europa e EUA."
+      intro = ""             # headline fundido: "olá, meu nome é" apresentaria o cargo junto
+      subtitle = "Engenheiro de IA e Front-End"
       location = "São Paulo, BR"
-      content = "Engenheiro Front-End com mais de 6 anos construindo design systems, ERPs e dashboards de alta escala com React, Vue.js e TypeScript. De São Paulo, SP."
+      content = "Mais de 6 anos construindo design systems, ERPs e dashboards de alta escala com React, Vue.js e TypeScript — e, hoje, os sistemas que põem IA para trabalhar em cima deles: contexto como orçamento, recuperação antes de geração, verificação antes do aceite."
 
     [languages.pt.params.about]
       content = """
