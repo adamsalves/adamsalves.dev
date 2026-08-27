@@ -186,7 +186,7 @@ summaryLength = 30
       content = """
 I'm an AI and Front-End Engineer with 6+ years of experience building design systems, ERPs and high-scale dashboards. I specialize in React and Vue.js with TypeScript, with a track record of cutting delivery time and improving developer experience across cross-functional teams — including the design system behind a mobile app with 5M+ downloads on Google Play.
 
-I deliver with AI from the start, not as a finishing layer: a contract before execution, retrieval before generation, verification before acceptance. The expensive part isn't generating code, it's deciding what to accept. The method, with the numbers, is in [Contract before code](/en/blogs/contrato-antes-do-codigo/).
+Every product I deliver now goes through agents, from the first commit to the merge — with a contract written before execution and a human review before acceptance. A year of that, with the numbers, in [Contract before code](/en/blogs/contrato-antes-do-codigo/).
 
 I studied Web Programming at Colégio Técnico de Campinas (Cotuca – Unicamp), and I read and write English proficiently. In my free time I enjoy video games, sports (football, basketball and cycling) and music."""
 
@@ -293,7 +293,7 @@ I studied Web Programming at Colégio Técnico de Campinas (Cotuca – Unicamp),
       content = """
 Sou Engenheiro de IA e Front-End com mais de 6 anos de experiência construindo design systems, ERPs e dashboards de alta escala. Especializado em React e Vue.js com TypeScript, com histórico de reduzir tempo de entrega e melhorar a experiência de desenvolvimento em equipes multidisciplinares — incluindo o design system por trás de um app com mais de 5 milhões de downloads na Google Play.
 
-Entrego com IA desde o início, não como acabamento: contrato antes da execução, recuperação antes da geração, verificação antes do aceite. O caro não é gerar código, é decidir o que aceitar. O método, com os números, está em [Contrato antes do código](/blogs/contrato-antes-do-codigo/).
+Todo produto que entrego hoje passa por agentes, do primeiro commit ao merge — com contrato escrito antes da execução e revisão humana antes do aceite. Um ano nisso, com os números, em [Contrato antes do código](/blogs/contrato-antes-do-codigo/).
 
 Sou formado em Informática para Internet (Programação Web) pelo Colégio Técnico de Campinas (Cotuca – Unicamp) e leio e escrevo inglês com proficiência. Nas horas livres, curto videogames, esportes (futebol, basquete e bicicleta) e música."""
 
