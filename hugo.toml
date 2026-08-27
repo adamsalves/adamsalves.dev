@@ -186,7 +186,7 @@ summaryLength = 30
       content = """
 I'm an AI and Front-End Engineer with 6+ years of experience building design systems, ERPs and high-scale dashboards. I specialize in React and Vue.js with TypeScript, with a track record of cutting delivery time and improving developer experience across cross-functional teams — including the design system behind a mobile app with 5M+ downloads on Google Play.
 
-For a year now I've done that work with agents every day, and the lesson was that the expensive part isn't writing code faster — it's deciding what to accept. In practice: a contract before execution, structured retrieval before generation, verification before acceptance. And it is measurable: the filter on my shell output has cut 47.3% of tokens across 7,905 commands. The method is written up in [Contract before code](/en/blogs/contrato-antes-do-codigo/).
+I deliver with AI from the start, not as a finishing layer: a contract before execution, retrieval before generation, verification before acceptance. The expensive part isn't generating code, it's deciding what to accept. The method, with the numbers, is in [Contract before code](/en/blogs/contrato-antes-do-codigo/).
 
 I studied Web Programming at Colégio Técnico de Campinas (Cotuca – Unicamp), and I read and write English proficiently. In my free time I enjoy video games, sports (football, basketball and cycling) and music."""
 
@@ -293,7 +293,7 @@ I studied Web Programming at Colégio Técnico de Campinas (Cotuca – Unicamp),
       content = """
 Sou Engenheiro de IA e Front-End com mais de 6 anos de experiência construindo design systems, ERPs e dashboards de alta escala. Especializado em React e Vue.js com TypeScript, com histórico de reduzir tempo de entrega e melhorar a experiência de desenvolvimento em equipes multidisciplinares — incluindo o design system por trás de um app com mais de 5 milhões de downloads na Google Play.
 
-Há um ano faço esse trabalho com agentes todo dia, e a lição foi que a parte cara não é escrever código mais rápido — é decidir o que aceitar. Na prática: contrato antes da execução, recuperação estruturada antes da geração, verificação antes do aceite. E dá para medir: o filtro na saída dos meus comandos de shell cortou 47,3% dos tokens em 7.905 execuções. O método está escrito em [Contrato antes do código](/blogs/contrato-antes-do-codigo/).
+Entrego com IA desde o início, não como acabamento: contrato antes da execução, recuperação antes da geração, verificação antes do aceite. O caro não é gerar código, é decidir o que aceitar. O método, com os números, está em [Contrato antes do código](/blogs/contrato-antes-do-codigo/).
 
 Sou formado em Informática para Internet (Programação Web) pelo Colégio Técnico de Campinas (Cotuca – Unicamp) e leio e escrevo inglês com proficiência. Nas horas livres, curto videogames, esportes (futebol, basquete e bicicleta) e música."""
 
