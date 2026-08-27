@@ -172,7 +172,7 @@ summaryLength = 30
 
   [languages.en.params]
     title = "Adams Alves"
-    description = "AI and Front-End Engineer. I deliver products with AI in the loop, high-scale front-end, and production-ready systems. Based in São Paulo, Brazil."
+    description = "AI and Front-End Engineer. I deliver products with AI in the loop, high-scale front-end in React, Vue.js and TypeScript, and production-ready systems. Based in São Paulo, Brazil."
 
     [languages.en.params.hero]
       fuseSubtitle = true
@@ -180,7 +180,7 @@ summaryLength = 30
       intro = ""             # fused headline: "hi, my name is" would introduce a job title too
       subtitle = "AI and Front-End Engineer"
       location = "São Paulo, Brazil"
-      content = "I deliver products with AI in the loop, high-scale front-end, and production-ready systems."
+      content = "I deliver products with AI in the loop, high-scale front-end in React, Vue.js and TypeScript, and production-ready systems."
 
     [languages.en.params.about]
       content = """
@@ -279,7 +279,7 @@ I studied Web Programming at Colégio Técnico de Campinas (Cotuca – Unicamp),
 
   [languages.pt.params]
     title = "Adams Alves"
-    description = "Engenheiro de IA e Front-End. Entrego produtos com IA no fluxo, front-end de alta escala e sistemas prontos para produção. De São Paulo, SP."
+    description = "Engenheiro de IA e Front-End. Entrego produtos com IA no fluxo, front-end de alta escala em React, Vue.js e TypeScript, e sistemas prontos para produção. De São Paulo, SP."
 
     [languages.pt.params.hero]
       fuseSubtitle = true
@@ -287,7 +287,7 @@ I studied Web Programming at Colégio Técnico de Campinas (Cotuca – Unicamp),
       intro = ""             # headline fundido: "olá, meu nome é" apresentaria o cargo junto
       subtitle = "Engenheiro de IA e Front-End"
       location = "São Paulo, SP"
-      content = "Entrego produtos com IA no fluxo, front-end de alta escala e sistemas prontos para produção."
+      content = "Entrego produtos com IA no fluxo, front-end de alta escala em React, Vue.js e TypeScript, e sistemas prontos para produção."
 
     [languages.pt.params.about]
       content = """
