@@ -70,12 +70,6 @@ Sem um teto declarado, um agente com ferramentas boas usa todas elas. O limite n
 
 E há um loop mais lento por fora de todos: cada correção que eu dou vira memória e passa a valer nas sessões seguintes. São 159 acumuladas. O ganho não é o modelo aprender, é eu não digitar a mesma correção pela quarta vez.
 
-## A fronteira entre instrução e dado
-
-Uma coisa que eu trato como requisito e não como cuidado extra: input de usuário nunca é interpolado dentro de um prompt. A mensagem `user` fica separada da `system`.
-
-Concatenar as duas é a mesma classe de erro que montar SQL com `+`, e tem o mesmo remédio: a fronteira entre instrução e dado precisa existir no formato, não na esperança de que o dado se comporte. Todo modelo que lê ferramenta, página ou arquivo enviado por terceiro está a uma concatenação de executar o que aquele texto mandar.
-
 ## Onde isso encosta no trabalho
 
 Nenhuma dessas técnicas é sobre escrever código mais rápido. Elas são sobre a única coisa que fica cara quando o código passa a aparecer rápido: decidir o que aceitar.

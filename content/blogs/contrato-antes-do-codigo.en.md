@@ -70,12 +70,6 @@ Without a stated ceiling, an agent with good tools uses all of them. The limit d
 
 There's a slower loop wrapped around all of them: every correction I give becomes a memory and applies in later sessions. There are 159 of them now. The gain isn't the model learning — it's me not typing the same correction a fourth time.
 
-## The boundary between instruction and data
-
-One thing I treat as a requirement rather than extra care: user input is never interpolated into a prompt. The `user` message stays separate from the `system` one.
-
-Concatenating the two is the same class of mistake as building SQL with `+`, and it has the same fix: the boundary between instruction and data has to exist in the format, not in the hope that the data behaves. Any model reading a tool result, a web page or a third-party file is one concatenation away from doing what that text says.
-
 ## Where this touches the work
 
 None of these techniques is about writing code faster. They're about the one thing that gets expensive once code starts arriving fast: deciding what to accept.
