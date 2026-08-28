@@ -248,7 +248,7 @@ I studied Web Programming at Colégio Técnico de Campinas (Cotuca – Unicamp),
         repo = "terminal-mono"
         language = "Hugo / Go"
         tagline = "the Hugo theme this site runs on"
-        content = "Dark, monospace theme for portfolio and blog: animated terminal hero, repository-style project cards, bilingual posts, five palettes and answer-engine output (llms.txt, JSON-LD, robots.txt). No third-party JavaScript — and no third-party request at all. Published under MIT."
+        content = "Dark, monospace theme for portfolio and blog: animated terminal hero, repository-style project cards, bilingual posts and five palettes. The answer-engine half (llms.txt, JSON-LD, robots.txt) became its own module, aeo-hugo, which the theme imports. No third-party JavaScript — and no third-party request at all. Published under MIT."
         badges = ["hugo", "go", "css", "a11y", "i18n"]
         [languages.en.params.projects.items.featured]
           name = "demo"
@@ -358,7 +358,7 @@ Sou formado em Informática para Internet (Programação Web) pelo Colégio Téc
         repo = "terminal-mono"
         language = "Hugo / Go"
         tagline = "o tema Hugo que roda este site"
-        content = "Tema dark e monoespaçado para portfólio e blog: hero com terminal animado, cards em estilo repositório, posts bilíngues, cinco paletas e saída para *answer engines* (llms.txt, JSON-LD, robots.txt). Sem JavaScript de terceiros — e sem nenhuma requisição externa. Publicado sob licença MIT."
+        content = "Tema dark e monoespaçado para portfólio e blog: hero com terminal animado, cards em estilo repositório, posts bilíngues e cinco paletas. A parte de *answer engines* (llms.txt, JSON-LD, robots.txt) virou um módulo próprio, o aeo-hugo, que o tema importa. Sem JavaScript de terceiros — e sem nenhuma requisição externa. Publicado sob licença MIT."
         badges = ["hugo", "go", "css", "a11y", "i18n"]
         [languages.pt.params.projects.items.featured]
           name = "demo"
