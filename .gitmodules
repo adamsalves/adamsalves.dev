@@ -1,3 +1,6 @@
 [submodule "themes/terminal-mono"]
 	path = themes/terminal-mono
 	url = https://github.com/adamsalves/terminal-mono
+[submodule "themes/aeo-hugo"]
+	path = themes/aeo-hugo
+	url = https://github.com/adamsalves/aeo-hugo

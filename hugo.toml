@@ -1,7 +1,13 @@
 baseURL = "https://adamsalves.dev/"
 defaultContentLanguage = "pt"
 defaultContentLanguageInSubdir = false   # pt at /, en at /en/
-theme = "terminal-mono"
+# Two components, in precedence order — aeo-hugo first. It carries the AEO
+# templates (llms.txt, llms-full.txt, the markdown twins, robots.txt, the
+# sitemap and the JSON-LD graph) and the LLMS/LLMSFULL/MARKDOWN output formats
+# the [outputs] block below names. The theme does not declare it: Hugo only
+# resolves a module import when the project is module-based, and this site
+# vendors both as git submodules.
+theme = ["aeo-hugo", "terminal-mono"]
 enableRobotsTXT = true
 enableEmoji = true
 summaryLength = 30
@@ -110,12 +116,6 @@ summaryLength = 30
   showScanlines = true       # CRT scanline overlay
   readingProgress = true     # reading-progress bar on posts
   terminalUser = "adams@portfolio"
-  # Only a production build is indexable. This depends on vercel.json passing
-  # --environment: `hugo` (unlike `hugo server`) defaults to production when the
-  # flag is absent, which made hugo.IsProduction true on preview deploys too and
-  # left this param inert — every preview was crawlable, with a Sitemap: line
-  # pointing at the production domain.
-  allowIndexing = false
   # favicon = "/favicon.svg" # the theme ships a favicon; set to override
   ogImage = "/images/og.png" # default image for Open Graph/Twitter (1200x630)
   # twitter = "adamsalves"   # handle (without @) for twitter:site
@@ -139,6 +139,28 @@ summaryLength = 30
     # reads it from the first language by weight and warns if another one
     # disagrees, so it belongs here at the root and nowhere else.
     flatSitemap = true
+
+    # Only a production build is indexable. This depends on vercel.json passing
+    # --environment: `hugo` (unlike `hugo server`) defaults to production when
+    # the flag is absent, which made hugo.IsProduction true on preview deploys
+    # too and left this param inert — every preview was crawlable, with a
+    # Sitemap: line pointing at the production domain.
+    #
+    # It lived at [params] allowIndexing until the AEO templates became a
+    # module; the root spelling still works and warns once.
+    allowIndexing = false
+
+    # Who publishes the site. The module reads this rather than the theme's
+    # params — a component cannot know where a theme keeps its hero or its
+    # social links — so the Person behind the JSON-LD is stated here. sameAs
+    # mirrors [params.footer.socialNetworks]; jobTitle is translated and lives
+    # under each language, mirroring [params.hero] subtitle.
+    [params.aeo.publisher]
+      type = "Person"
+      sameAs = [
+        "https://github.com/adamsalves",
+        "https://linkedin.com/in/adams-alves",
+      ]
 
   [params.navbar]
     brandName = "adamsalves"
@@ -173,6 +195,9 @@ summaryLength = 30
   [languages.en.params]
     title = "Adams Alves"
     description = "AI and Front-End Engineer. I deliver products with AI in the loop, high-scale front-end in React, Vue.js and TypeScript, and production-ready systems. Based in São Paulo, Brazil."
+
+    [languages.en.params.aeo.publisher]
+      jobTitle = "AI and Front-End Engineer"   # the schema Person; mirrors hero.subtitle below
 
     [languages.en.params.hero]
       fuseSubtitle = true
@@ -280,6 +305,9 @@ I studied Web Programming at Colégio Técnico de Campinas (Cotuca – Unicamp),
   [languages.pt.params]
     title = "Adams Alves"
     description = "Engenheiro de IA e Front-End. Entrego produtos com IA no fluxo, front-end de alta escala em React, Vue.js e TypeScript, e sistemas prontos para produção. De São Paulo, SP."
+
+    [languages.pt.params.aeo.publisher]
+      jobTitle = "Engenheiro de IA e Front-End"   # the schema Person; mirrors hero.subtitle below
 
     [languages.pt.params.hero]
       fuseSubtitle = true
