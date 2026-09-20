@@ -304,22 +304,22 @@ I studied Web Programming at Colégio Técnico de Campinas (Cotuca – Unicamp),
 
   [languages.pt.params]
     title = "Adams Alves"
-    description = "Software Engineer. Entrego produtos com IA no fluxo, front-end de alta escala em React, Vue.js e TypeScript, e sistemas prontos para produção. De São Paulo, SP."
+    description = "Engenheiro de Software. Entrego produtos com IA no fluxo, front-end de alta escala em React, Vue.js e TypeScript, e sistemas prontos para produção. De São Paulo, SP."
 
     [languages.pt.params.aeo.publisher]
-      jobTitle = "Software Engineer"   # the schema Person; mirrors hero.subtitle below
+      jobTitle = "Engenheiro de Software"   # the schema Person; mirrors hero.subtitle below
 
     [languages.pt.params.hero]
       fuseSubtitle = true
       tagline = "De São Paulo, SP."
       intro = ""             # headline fundido: "olá, meu nome é" apresentaria o cargo junto
-      subtitle = "Software Engineer"
+      subtitle = "Engenheiro de Software"
       location = "São Paulo, SP"
       content = "Entrego produtos com IA no fluxo, front-end de alta escala em React, Vue.js e TypeScript, e sistemas prontos para produção."
 
     [languages.pt.params.about]
       content = """
-Sou Software Engineer com mais de 6 anos de experiência construindo design systems, ERPs e dashboards de alta escala. Especializado em React e Vue.js com TypeScript, com histórico de reduzir tempo de entrega e melhorar a experiência de desenvolvimento em equipes multidisciplinares — incluindo o design system por trás de um app com mais de 5 milhões de downloads na Google Play.
+Sou Engenheiro de Software com mais de 6 anos de experiência construindo design systems, ERPs e dashboards de alta escala. Especializado em React e Vue.js com TypeScript, com histórico de reduzir tempo de entrega e melhorar a experiência de desenvolvimento em equipes multidisciplinares — incluindo o design system por trás de um app com mais de 5 milhões de downloads na Google Play.
 
 Todo produto que entrego hoje passa por agentes, do primeiro commit ao merge — com contrato escrito antes da execução e revisão humana antes do aceite. Um ano nisso, com os números, em [Contrato antes do código](/blogs/contrato-antes-do-codigo/).
 
