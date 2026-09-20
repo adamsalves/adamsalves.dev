@@ -4,3 +4,6 @@
 .hugo_build.lock
 public/
 resources/_gen/
+
+# LinkedIn banners, kept local (design/linkedin/)
+design/linkedin/
